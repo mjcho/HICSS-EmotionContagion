@@ -1,16 +1,21 @@
 ---
-title: "Exploring Holistic Human-Centered Empirical Methods"
-subtitle: "Case Studies in Multimodal Research"
+title: "Inspiration Contagion Effects:"
+subtitle: "Elevated Thoughts and Transcendent Emotions"
 author:
-  - name: "卓牧融 | Mu-Jung 'MJ' Cho"
+  - name: "Chingching Chang"
+    orcid: '0000-0003-0551-3190'
+    email: 'chingchingchang@as.edu.tw'
+    affiliations: 'RCHSS, Academia Sinica'   
+  - name: "Mu-Jung 'MJ' Cho"
     orcid: '0000-0001-5500-6336'
     email: 'mjcho@as.edu.tw'
     affiliations: 'RCHSS, Academia Sinica'
 title-slide-attributes:
-    data-background-image: https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXBnenU0Y2I2NmY5azB4eDM1cml4bGo0MmgxMjN4eWYxazc5dTZscSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sJvz8Qnfly3BOuotGx/giphy.gif # /imgs/synthwave.gif # miami_nights1984-sentimental.jpeg 
+    data-background-image: https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMW1na2RybnlnOTg1ankzYWViYXJhc3ppbXM0ZnFvcDFjcXl6dWZncCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wsmPIsglhNMPkUzpJA/giphy.gif
+    # /imgs/synthwave.gif # miami_nights1984-sentimental.jpeg 
     # data-background-size: 120%, auto
     # data-background-position: bottom
-    data-background-opacity: "0.2"
+    data-background-opacity: "0.1"
 format:
   revealjs:
     theme: [default, synthwave84-reveal-1.scss]
@@ -29,10 +34,6 @@ date: last-modified
 #| echo: false
 # minimal setup chunk
 ```
-# Inspiration Contagion Effects: Elevated Thoughts and Transcendent Emotions
-
-Chingching Chang · Mu-Jung Cho  
-RCHSS, Academia Sinica · HICSS (manuscript talk)  
 
 ---
 
@@ -111,8 +112,7 @@ Source archives: The-Eye.eu + Pushshift.io (URL archive)
 :::
 :::
 
-*(Optional figure placeholder)*  
-`![](imgs/fig2_emotion_heatmap.png){width=85%}`
+![](imgs/rq1-emo_cor.png){width=85%}
 
 ---
 
@@ -175,7 +175,7 @@ Topic modeling (BerTopic-style):
   - **Nagelkerke R² ≈ 0.40**
 
 *(Figure placeholder: post–comment topic contingency heatmap)*  
-`![](imgs/fig1_topic_heatmap.png){width=88%}`
+![](imgs/rq1-topic_contingencies.png){width=88%}
 
 ---
 
@@ -192,7 +192,7 @@ From mixed-effects logistic models:
   - Post curiosity → more comment admiration: **β = 0.06**, p ≤ .05
 
 *(Figure placeholder: emotion contingency heatmap)*  
-`![](imgs/fig2_emotion_heatmap.png){width=88%}`
+![](imgs/rq1-mean_reply_emo.png){width=88%}
 
 ---
 
@@ -226,7 +226,7 @@ Two roles of topic context:
 - Motivation-related emotions may function more as **elicitors** than “copied emotions”
   - e.g., curiosity → admiration
 
-**Implication:** designing motivational communities may require supporting both  
+[Implication]{.neon-cyan}: designing motivational communities may require supporting both  
 (1) transferable narrative “scripts” and (2) gratitude-rich affective framing.
 
 ---
