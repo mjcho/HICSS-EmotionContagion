@@ -43,12 +43,24 @@ date: last-modified
 
 In motivational communities, posts don’t just inform—**they can spread inspiration** through replies.  
 
+::::{.columns}
+
+::: {.column width="40%"}
 - Prior work on **emotion contagion** often focuses on:
   - broad *valence/arousal*, or
   - basic emotions (e.g., happiness vs. sadness)
+
+:::
+
+:::{.column width="60%"}
 - But inspiration is not only “positive affect”:
   - **thoughts/ideas**: e.g., evoked by scripts, lessons, narratives 
-  - **self-transcendent experience**: feel hopeful and acquire a sense of self-expansion (Chang, 2023; Thrash, 2007)
+  - **self-transcendent experience**: feel hopeful and acquire a sense of self-expansion (Chang, 2023; Thrash, 2007)  
+:::
+
+ ![Model of inspiration processes](imgs/inspiration_process.jpg){width=75% fig-align="left"}
+
+::::
 
 ---
 
