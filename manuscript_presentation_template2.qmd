@@ -15,14 +15,14 @@ title-slide-attributes:
     # /imgs/synthwave.gif # miami_nights1984-sentimental.jpeg 
     # data-background-size: 120%, auto
     # data-background-position: bottom
-    data-background-opacity: "0.1"
+    data-background-opacity: "0.05"
 format:
   revealjs:
     theme: [default, synthwave84-reveal-1.scss]
     slide-number: c
     incremental: true
     slide-level: 2
-    smaller: true
+    # smaller: true
     scrollable: true
 execute:
   echo: true
@@ -41,38 +41,37 @@ date: last-modified
 
 ## Why study “inspiration contagion” online?
 
-- In motivational communities, posts don’t just inform—[they can spread inspiration]{.neon-green} through replies.
-- Prior work on *emotion contagion* often focuses on:
-  - broad **valence/arousal**, or
+In motivational communities, posts don’t just inform—**they can spread inspiration** through replies.  
+
+- Prior work on **emotion contagion** often focuses on:
+  - broad *valence/arousal*, or
   - basic emotions (e.g., happiness vs. sadness)
 - But inspiration is not only “positive affect”:
-  - **thoughts/ideas** (scripts, lessons, reframing)
-  - **self-transcendent emotions** (e.g., admiration, gratitude, optimism)
+  - **thoughts/ideas**: e.g., evoked by scripts, lessons, narratives 
+  - **self-transcendent experience**: feel hopeful and acquire a sense of self-expansion (Chang, 2023; Thrash, 2007)
 
 ---
 
 ## Our contribution
 
-We disentangle two pathways:
+- We disentangle two pathways:
+  - **Thought contagion**: transfer of *thematic ideas* (topics) from posts → comments  
+  - **Emotion contagion**: transfer of *specific feelings* from posts → comments
 
-- **Thought contagion**: transfer of *thematic ideas* (topics) from posts → comments  
-- **Emotion contagion**: transfer of *specific feelings* from posts → comments
-
-Focus emotions:
-- **Self-transcendent**: admiration, gratitude, optimism  
-- **Motivation-related**: curiosity, desire, realization
+- And focus on two kinds of emotions:
+  - **Self-transcendent**: admiration, gratitude, optimism (Narayan and Seng, 2018)
+  - **Motivation-related**: curiosity, desire, realization
 
 ---
 
 # Research Questions
 
-## RQs (paper)
+## RQs
 
-- **RQ1:** What topics are more likely to trigger  
-  (a) thought contagion and (b) emotion contagion?
-- **RQ2:** Do inspiring posts generate more inspiring **thoughts** in comments?
-- **RQ3:** Which self-transcendent emotion shows strongest **same-emotion** transfer?
-- **RQ4:** Which motivation-related emotion shows strongest **same-emotion** transfer?
+- **RQ1:** What topics are more likely to trigger: (a) thought contagion and (b) emotion contagion?
+- **RQ2:** Do inspiring posts generate more inspiring *thoughts* in comments?
+- **RQ3:** Which self-transcendent emotion triggers the strongest emotion transfer?
+- **RQ4:** Which motivation-related emotion triggers the strongest emotion transfer?
 
 ---
 
@@ -80,13 +79,12 @@ Focus emotions:
 
 ## r/GetMotivated at scale
 
-- Community scale: **24M+ followers**, ~**23rd** largest subreddit (at time of writing)
-- Collected: **all posts + comments** from subreddit creation → **Dec 2022**
+- Community scale: **24M+ followers**, **23rd** largest subreddit 
+- Collected: **all posts + comments** from subreddit creation **March 2010 → Dec 2022**
 - Final dataset:
   - **15,793 posts**
   - **230,418 comments** (linked to posts)
-
-Source archives: The-Eye.eu + Pushshift.io (URL archive)
+  - Source URL archives from *The-Eye.eu*
 
 ---
 
@@ -94,10 +92,10 @@ Source archives: The-Eye.eu + Pushshift.io (URL archive)
 
 ## Emotions from text (classifier)
 
-- BERT-based model aligned with **GoEmotions** (28 emotions), output on \[0,1\]
-- We focus on 6 inspiration-relevant emotions:
+- BERT-based model aligned with **GoEmotions** (28 emotions), output on \[0,1\]   
 
-::: {.columns}
+
+<!-- ::: {.columns}
 ::: {.column width="50%"}
 **Self-transcendent**
 - Admiration
@@ -110,32 +108,46 @@ Source archives: The-Eye.eu + Pushshift.io (URL archive)
 - Desire
 - Realization
 :::
-:::
+::: -->
 
-![](imgs/rq1-emo_cor.png){width=85%}
+![Heatmap of post and comment emotions](imgs/rq1-emo_cor.png){width=100% fig-align="left"}
+
 
 ---
 
 ## Topics as “inspiring thoughts”
 
-Topic modeling (BerTopic-style):
 
-1. Embed text: **SBERT all-miniLM-L6-v2**
-2. Reduce: **UMAP** (tuned #components)
-3. Cluster: **K-Means** (chosen for interpretability)
-4. Represent: tokenization + topic representation
-5. Label: LLM-assisted labeling + human review
+:::: {.columns}
 
-**Nine topics identified**
-1) Media, Inspiration, and Personal Stories  
-2) Relationships and Personal Growth  
-3) Motivational Insights and Personal Growth Discussions  
-4) Motivation and self-discipline strategies  
-5) Overcoming Struggles and Finding Motivation  
-6) GetMotivated Community and Tools for Productivity  
-7) Gratitude and Inspiration  
-8) Personal Growth and Career Development Challenges  
-9) Weight loss and healthy lifestyle transformations  
+::: {.column width="50%"}
+
+**Topic modeling (`BerTopic`-style)**:
+
+1. Embed: `SBERT all-miniLM-L6-v2`
+2. Reduce: `UMAP` (tuned #components)
+3. Cluster: `K-Means` (chosen for interpretability)
+4. Tokenize + weighting: count vectorizer + c-TF-IDF
+4. Represent: keywords + docs + `GPT-4-mini` + human review
+:::
+
+::: {.column width="50%"} 
+
+**Nine topics identified:**  
+
+1. Media, Inspiration, and Personal Stories  
+2. Relationships and Personal Growth  
+3. Motivational Insights...
+4. Overcoming Struggles...
+5. Weight loss and healthy lifestyle...
+<!-- 5. Overcoming Struggles and Finding Motivation  
+6. GetMotivated Community and Tools for Productivity  
+7. Gratitude and Inspiration  
+8. Personal Growth and Career Development Challenges   -->
+9. ... 
+:::
+ 
+::::
 
 ---
 
@@ -143,7 +155,8 @@ Topic modeling (BerTopic-style):
 
 ## Two contagion tests
 
-::: {.columns}
+:::: {.columns}
+
 ::: {.column width="52%"}
 ### Thought contagion
 - **Chi-square**: post-topic × comment-topic  
@@ -157,10 +170,11 @@ Topic modeling (BerTopic-style):
 - **6 mixed-effects logistic models** (one per comment emotion)
 - Predict *comment emotion* from:
   - **same post emotion**
-  - other post emotions (cross-emotion)
+  - **other post emotions** (cross-emotion)
   - **topic** + **emotion × topic** interactions
 :::
-:::
+
+::::
 
 ---
 
@@ -168,20 +182,24 @@ Topic modeling (BerTopic-style):
 
 ## Thought contagion: strong topic alignment
 
-- Post-topic and comment-topic are **not independent**  
-  - χ² = **75,648**, df = **64**, p ≤ .001
-- Effect size: **Cramer’s V = 0.21** (moderate association; clear diagonal structure)
-- MEMLM: strong positive log-odds for “matching topics”  
-  - **Nagelkerke R² ≈ 0.40**
+:::: {.columns}
 
-*(Figure placeholder: post–comment topic contingency heatmap)*  
-![](imgs/rq1-topic_contingencies.png){width=88%}
+::: {.column width="30%"}
+- Post-topic and comment-topic are **not independent**, χ² = 75,648, p ≤ .001
+- **Cramer’s V = 0.21** (moderate association; clear diagonal structure)
+- MEMLM: strong **positive** log-odds for “matching topics”
+  <!-- - **Nagelkerke R² ≈ 0.40** -->
+:::
+
+::: {.column width="70%"}
+![Heatmap of topic contingencies](imgs/rq1-topic_contingencies.png){fig-align="left"}
+:::
+
+::::
 
 ---
 
 ## Emotion contagion: selective (same-emotion + cross-emotion)
-
-From mixed-effects logistic models:
 
 - **Same-emotion transfer**
   - Gratitude → gratitude in comments: **β = 0.15**, p ≤ .01
@@ -190,9 +208,6 @@ From mixed-effects logistic models:
 
 - **Cross-emotion**
   - Post curiosity → more comment admiration: **β = 0.06**, p ≤ .05
-
-*(Figure placeholder: emotion contingency heatmap)*  
-![](imgs/rq1-mean_reply_emo.png){width=88%}
 
 ---
 
@@ -211,9 +226,6 @@ Two roles of topic context:
      **gratitude × topic5** is **negative** (β = **−0.14**, p ≤ .01)  
      → thematic context can *weaken* direct same-emotion transfer.
 
-*(Table placeholder)*  
-`![](imgs/table2_emotion_models.png){width=92%}`
-
 ---
 
 # Discussion
@@ -221,13 +233,13 @@ Two roles of topic context:
 ## What we learn about “inspiration contagion”
 
 - Inspiration spreads through **two channels**:
-  - [Ideas]{.neon-green}: topics strongly mirror between posts and comments
-  - [Emotions]{.neon-green}: transfer is selective (strongest for **gratitude**)
-- Motivation-related emotions may function more as **elicitors** than “copied emotions”
-  - e.g., curiosity → admiration
-
-[Implication]{.neon-cyan}: designing motivational communities may require supporting both  
-(1) transferable narrative “scripts” and (2) gratitude-rich affective framing.
+  - **Ideas**: topics strongly mirror between posts and comments
+  - **Emotions**: transfer is selective (strongest for **gratitude**)
+<!-- - Motivation-related emotions may function more as **elicitors** than “copied emotions”
+  - e.g., curiosity → admiration -->
+- **Implication**: designing motivational communities may require supporting both:
+  1. transferable narrative “scripts” (e.g., overcoming adversity), and
+  2. gratitude-rich affective framing.
 
 ---
 
@@ -235,15 +247,30 @@ Two roles of topic context:
 
 ## Limitations + next steps
 
-**Limitations**
+**Limitations:**
+
 - Text classifier measures **expressed** emotion (not felt emotion)
 - Observational design: contagion ≠ causation
 - Topic labels + classifier outputs introduce measurement error
 
-**Next steps**
+<!-- **Next steps**
 - Thread dynamics: depth/time decay of contagion
 - User-level heterogeneity (who transmits / who is susceptible?)
-- Experiments: manipulate post topic/emotion to test causal mechanisms
+- Experiments: manipulate post topic/emotion to test causal mechanisms -->
+
+---
+
+## Limitations + next steps
+
+**Next steps (planned)**: Experimental priming test
+
+- Add a **Prolific + Qualtrics + jsPsych** lexical-decision task after each post
+- Two blocks per post:
+  - **Emotion accessibility** (emotion targets)
+  - **Topic accessibility** (topic-keyword targets)
+- Stimuli: targets from cluster keywords (`KeyBERT` + `GPT-5.1); fillers + non-words **length-matched**
+- Outcomes: **RT + accuracy**
+- Hypothesis: faster RT for targets ⇒ increased **accessibility/priming**, offering causal evidence for mechanisms behind observed contagion
 
 ---
 

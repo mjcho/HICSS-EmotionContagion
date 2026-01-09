@@ -168,6 +168,14 @@ $code-inline-border-color: rgba(249, 42, 173, 0.6) !default;
   margin: 0.25em 0;
 }
 
+// bold list items in paragraphs and lists
+.reveal ul li strong,
+.reveal ol li strong,
+.reveal p strong { 
+  font-weight: 900 !important; /* Use 800 or 900 for high contrast */
+  color: $sw-green;
+}
+
 .reveal ul li::marker,
 .reveal ol li::marker {
   color: $accent;
@@ -324,3 +332,4 @@ $code-inline-border-color: rgba(249, 42, 173, 0.6) !default;
 .columns6040 div.column:not(:first-child) {
   width: 40%;
 }
+
